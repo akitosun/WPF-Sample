@@ -1,0 +1,13 @@
+﻿<Window x:Class="WPF_loggin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_loggin"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowStyle="SingleBorderWindow" ResizeMode="NoResize"  
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid>
+        <Label Name="WelcomeLabel" Content="Welcome back, " HorizontalAlignment="Left" Margin="240,240,0,0" VerticalAlignment="Top" Height="35" Width="240" FontFamily="Microsoft JhengHei" FontSize="20" RenderTransformOrigin="1.167,1"/>
+    </Grid>
+</Window>
