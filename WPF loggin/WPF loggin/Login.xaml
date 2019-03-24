@@ -9,11 +9,11 @@
     <Grid>
         <Label Content="帳號:" HorizontalAlignment="Left" Margin="84,84,0,0" VerticalAlignment="Top" FontSize="16" />
         <Label Content="密碼:" HorizontalAlignment="Left" Margin="84,129,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox Name="UserNameTextBox" HorizontalAlignment="Left" Height="23" Margin="140,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
+        <TextBox Name="UserNameInput" HorizontalAlignment="Left" Height="23" Margin="140,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
         <Button Name="LoginButton" Content="登入" HorizontalAlignment="Left" Margin="84,195,0,0" VerticalAlignment="Top" Width="110" Background="#FF3BB927" FontFamily="Microsoft JhengHei" FontWeight="Bold" Height="40" FontSize="18" Click="LoginButton_Click"/>
         <Button Name="RegisterButton" Content="建立帳號" HorizontalAlignment="Left" Margin="210,195,0,0" VerticalAlignment="Top" Width="110" Height="40" FontFamily="Microsoft JhengHei" FontWeight="Bold" FontSize="18" Click="RegisterButton_Click"/>
 
-        <PasswordBox HorizontalAlignment="Left" Height="21" Margin="140,134,0,0" VerticalAlignment="Top" Width="180"/>
+        <PasswordBox Name="PasswordInput" HorizontalAlignment="Left" Height="21" Margin="140,134,0,0" VerticalAlignment="Top" Width="180"/>
 
     </Grid>
 </Window>
