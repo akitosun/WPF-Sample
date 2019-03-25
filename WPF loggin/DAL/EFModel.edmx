@@ -7,9 +7,8 @@
     <Schema Namespace="WPFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserName" />
           </Key>
-          <Property Name="Id" Type="char" MaxLength="36" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
@@ -20,17 +19,16 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WPFDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WPFDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="WPFDBModel.User" />
+        </EntityContainer>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserName" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="WPFDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="Self.User" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -40,9 +38,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="WPFDBModel.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -45,16 +45,23 @@ namespace WPF_loggin
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = HashPassword();
-            var dto = new User();
-            dto.UserName = UserNameInput.Text;
-            dto.PasswordHash = result;
-            dto.Id = Guid.NewGuid().ToString();
-            db.Users.Add(dto);
-            db.SaveChanges();
-            MessageBox.Show("註冊成功，請重新登入!");
-            UserNameInput.Text = string.Empty;
-            PasswordInput.Password = string.Empty;
+            if (CheckUserName())
+            {
+                var result = HashPassword();
+                var dto = new User();
+                dto.UserName = UserNameInput.Text;
+                dto.PasswordHash = result;
+                
+                db.Users.Add(dto);
+                db.SaveChanges();
+                MessageBox.Show("註冊成功，請重新登入!");
+                UserNameInput.Text = string.Empty;
+                PasswordInput.Password = string.Empty;
+            }
+            else
+            {
+                MessageBox.Show("帳號重複，請重新輸入");
+            }
         }
 
         private bool LoginCheck()
@@ -74,6 +81,13 @@ namespace WPF_loggin
             var crypto = sha512.ComputeHash(password); //進行SHA512加密
             var result = Convert.ToBase64String(crypto); //把加密後的字串從Byte[]轉為字串
             return result;
+        }
+
+        private bool CheckUserName()
+        {
+            var dto = db.Users.FirstOrDefault(x => x.UserName == UserNameInput.Text);
+            if (dto == null) return false;
+            return true;
         }
     }
 }
